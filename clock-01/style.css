@@ -1,0 +1,360 @@
+/* google fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+
+/* .................................. */
+
+/* css variables */
+
+:root {
+    /* colors */
+    --body-color-light: #dedede;
+    --body-color-dark: #222;
+    --text-color-light: #fcfcfc;
+    --text-color-dark: #222;
+    --shadow-bright: rgba(255, 255, 255, 0.8);
+    --shadow-dim: rgba(17, 17, 17, 0.3);
+    --dark-bright: rgba(255, 255, 255, 0.05);
+    --dark-dim: rgba(0, 0, 0, 0.5);
+    --highlight-color: rgb(23, 176, 187);
+
+    /* typography */
+    --main-font: 'Poppins', sans-serif;
+    --biggest-size: 1.5rem;
+    --normal-size: 0.9rem;
+    --small-size: 0.7rem;
+}
+
+/* typography for bigger screen */
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-size: 2rem;
+        --normal-size: 1.2rem;
+        --small-size: 0.9rem;
+    }
+}
+
+/* .................................. */
+
+/* base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--body-color-light);
+}
+
+.main {
+    transition: 0.3s ease-out;
+}
+
+/* .................................. */
+
+/* reusable css */
+
+.container {
+    max-width: 1024px;
+    margin-inline: 1rem;
+    padding-inline: 0.5rem;
+}
+
+/* .................................. */
+
+/* clock */
+
+
+#clock {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.clock__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+}
+
+/* dark/light mode button */
+
+.button__container {
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    /* border: 1px solid black; */
+    box-shadow: inset -2px -2px 5px var(--shadow-bright),
+                inset 2px 2px 5px var(--shadow-dim);
+    margin-bottom: -2rem;
+}
+
+.button__container i {
+    color: var(--highlight-color);
+}
+
+.dark,
+.light {
+    position: absolute;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.light {
+    opacity: 0;
+}
+
+
+/* .................................. */
+
+/* main clock */
+
+.clock__circle {
+    position: relative;
+    align-self: center;
+    width: 200px;
+    height: 200px;
+    background-color: var(--body-color-light);
+    box-shadow: -6px -6px 16px var(--shadow-bright),
+                6px 6px 16px var(--shadow-dim),
+                inset 6px 6px 16px var(--shadow-dim),
+                inset -6px -6px 16px var(--shadow-bright);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-out;
+}
+
+/* hour markers */
+
+.twelve,
+.three,
+.six,
+.nine {
+    position: absolute;
+    background-color: var(--text-color-dark);
+    width: 1rem;
+    height: 0.1rem;
+}
+
+.twelve, 
+.six {
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.twelve {
+    left: 50%;
+    top: 1.25rem;
+}
+
+.three {
+    top: 50%;
+    right: 0.75rem;
+}
+
+.six {
+    left: 50%;
+    bottom: 1.25rem;
+}
+
+.nine {
+    top: 50%;
+    left: 0.75rem;
+}
+
+/* center circle and clock hands */
+
+.center__circle {
+    align-self: center;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--highlight-color);
+    border-radius: 50%;
+    border: 1px solid var(--highlight-color);
+    z-index: 100;
+}
+
+.hour__hand,
+.minutes__hand,
+.seconds__hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+/* hour hand */
+
+.hour__hand {
+    width: 100px;
+    height: 100px;
+    /* background-color: white; */
+}
+
+.hour__hand::before {
+    content: "";
+    position: absolute;
+    width: 0.25rem;
+    height: 3rem;
+    background-color: var(--text-color-dark);
+    border-radius: 0.75rem;
+    z-index: 1;
+}
+
+/* minutes hand */
+
+.minutes__hand {
+    width: 130px;
+    height: 130px;
+    /* background-color: white; */
+}
+
+.minutes__hand::before {
+    content: "";
+    position: absolute;
+    width: 0.25rem;
+    height: 4rem;
+    background-color: var(--text-color-dark);
+    border-radius: 0.75rem;
+    z-index: 1;
+}
+
+
+/* seconds hand */
+
+.seconds__hand {
+    width: 125px;
+    height: 125px;
+    /* background-color: white; */
+}
+
+.seconds__hand::before {
+    content: "";
+    position: absolute;
+    width: 0.1rem;
+    height: 5rem;
+    background-color: var(--highlight-color);
+    border-radius: 0.75rem;
+    z-index: 1;
+}
+
+
+/* clock text */
+
+.clock__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.clock__time {
+    color: var(--highlight-color);
+    display: flex;
+    column-gap: 0.15rem;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.time__ampm {
+    margin-left: 0.15rem;
+    font-size: 0.75rem;
+    /* align-self: flex-end; */
+}
+
+.clock__date {
+    font-size: 0.75rem;
+}
+
+/* .................................. */
+
+/* css that will be used in js */
+/* dark mode */
+
+.dark__mode {
+    color: var(--text-color-light);
+    background-color: var(--body-color-dark);
+    transition: 0.3s ease-in;
+}
+
+.dark__mode .clock__circle {
+    background-color: var(--body-color-dark);;
+    box-shadow: -6px -6px 16px var(--dark-bright),
+                6px 6px 16px var(--dark-dim),
+                inset 6px 6px 16px var(--dark-dim),
+                inset -6px -6px 16px var(--dark-bright);
+    transition: 0.3s ease-out;
+}
+
+.dark__mode .button__container{
+    background-color: var(--body-color-dark);;
+    box-shadow: inset 2px 2px 2px var(--dark-dim),
+                inset -2px -2px 1px var(--dark-bright);
+    transition: 0.3s ease-out;
+}
+
+.dark__mode .twelve,
+.dark__mode .three,
+.dark__mode .six,
+.dark__mode .nine,
+.dark__mode .hour__hand::before,
+.dark__mode .minutes__hand::before {
+    background-color: var(--text-color-light);
+}
+
+
+/* change theme icon */
+
+.change__icon .dark {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.change__icon .light {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+
+/* .................................. */
+
+
+/* breakpoints */
+
+/* very small devices */
+
+@media screen and (max-width: 320px) {
+    .container {
+        margin-inline: 0.5rem;
+    }
+}
+
+/* large devices */
+
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-inline: auto;
+    }
+
+    .clock__time {
+        font-size: 4rem;
+        font-weight: 500;
+    }
+    
+    .time__ampm {
+        font-size: 1rem;
+        /* align-self: flex-end; */
+    }
+    
+    .clock__date {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist analog clock 01</title>
+
+    <!-- remix icon cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- my css -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+
+    <main class="main" id="main">
+        <div class="container" id="container">
+            <!-- dark/light button -->
+            <div class="theme__btn" id="theme-btn" title="change theme">
+                <i class="ri-moon-fill dark" id="dark-icon"></i>
+                <i class="ri-sun-fill light" id="light-icon"></i>
+            </div>
+
+            <!-- main clock container -->
+            <div class="clock__container" id="clock-container">
+                <div class="wrapper">
+                    <!-- clock -->
+                    <div class="clock" id="clock">
+                        <!-- center circle and clock hands -->
+                        <div class="center__circle"></div>
+                        <!-- hands -->
+                        <div class="hour__hand" id="hour-hand"></div>
+                        <div class="minutes__hand" id="minutes-hand"></div>
+                    </div>
+
+
+                    <!-- clock content -->
+                    <div class="clock__content">
+                        <!-- time -->
+                        <div class="clock__time" id="time">
+                            <span class="time__hour" id="hour"></span>
+                            <span class="time__minutes" id="minutes"></span>
+                            <span class="time__ampm" id="ampm"></span>
+                        </div>
+
+                        <!-- day and date -->
+                        <div class="clock__data">
+                            <!-- day -->
+                            <div class="clock__day">
+                                <span class="data__day" id="day"></span>
+                            </div>
+
+                            <!-- date -->
+                            <div class="clock__date">
+                                <span class="date__month" id="month"></span>
+                                <span class="date__current-date" id="current-date"></span>
+                                <span class="date__year" id="year"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- my js -->
+    <script src="main.js"></script>
+</body>
+</html>

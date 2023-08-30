@@ -1,0 +1,341 @@
+/* google fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+
+/* .................................. */
+
+/* css variables */
+
+:root {
+    /* colors */
+    --body-color-light: rgb(230, 214, 197);
+    --body-color-dark: rgb(43, 37, 31);
+    --text-color-light: #eee;
+    --text-color-dark: #222;
+    --shadow-bright: rgba(255, 255, 255, 0.8);
+    --shadow-dim: rgba(43, 37, 31, 0.5);
+    --dark-bright: rgba(255, 255, 255, 0.09);
+    --dark-dim: rgba(0, 0, 0, 0.8);
+    --dark-border: #111;
+    --highlight-color: rgb(228, 90, 11);
+
+    /* typography */
+    --main-font: 'Poppins', sans-serif;
+    --biggest-size: 1.5rem;
+    --normal-size: 0.9rem;
+    --small-size: 0.7rem;
+}
+
+/* typography for bigger screen */
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-size: 2rem;
+        --normal-size: 1.2rem;
+        --small-size: 0.9rem;
+    }
+}
+
+/* .................................. */
+
+/* base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--body-color-light);
+    
+}
+
+.main {
+    transition: 0.3s ease-in;
+}
+
+/* .................................. */
+
+/* reusable css */
+
+.container {
+    max-width: 1024px;
+    margin-inline: 1rem;
+    padding-inline: 0.5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .................................. */
+
+/* theme button */
+
+.theme__btn {
+    align-self: flex-end;
+    margin-bottom: 1rem;
+    margin-right: 4rem;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px var(--shadow-dim),
+                -2px -2px 4px var(--shadow-bright);
+    border: 0.18rem solid var(--text-color-dark);
+    cursor: pointer;
+}
+
+.theme__btn i {
+    color: var(--highlight-color);
+}
+
+.dark,
+.light {
+    position: absolute;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.light {
+    opacity: 0;
+}
+
+/* .................................. */
+
+/* clock container */
+
+.clock__container {
+    width: 350px;
+    height: 200px;
+    border: 0.15rem solid var(--text-color-dark);
+    border-radius: 8rem;
+    /* background-color: var(--text-color-light); */
+    box-shadow: 6px 6px 10px var(--shadow-dim),
+                -4px -4px 10px var(--shadow-bright);
+    /* padding: rem; */
+    display: grid;
+    place-items: center;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.clock {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background-color: var(--text-color-light);
+    border: 0.16rem solid var(--text-color-dark);
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 5px var(--shadow-dim),
+                inset -2px -2px 5px var(--shadow-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center__circle {
+    width: 0.25rem;
+    height: 0.25rem;
+    background-color: var(--text-color-dark);
+    border-radius: 50%;
+    border: 1px solid var(--text-color-dark);
+    z-index: 10;
+}
+
+.hour__hand,
+.minutes__hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+/* hour hand */
+
+.hour__hand {
+    width: 50px;
+    height: 50px;
+}
+
+.hour__hand::before {
+    content: "";
+    position: absolute;
+    width: 0.15rem;
+    height: 1.5rem;
+    background-color: var(--highlight-color);
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+/* minutes hand */
+
+.minutes__hand {
+    width: 80px;
+    height: 80px;
+}
+
+.minutes__hand::before {
+    content: "";
+    position: absolute;
+    width: 0.15rem;
+    height: 2.5rem;
+    background-color: var(--highlight-color);
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+/* .................................. */
+
+/* clock data */
+
+.clock__content,
+.clock__data {
+    display: flex;
+    flex-direction: column;
+}
+
+/* clock time */
+
+.clock__time {
+    font-size: 3rem;
+    font-weight: 500;
+    display: flex;
+}
+
+.time__ampm {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+}
+
+.clock__day {
+    font-size: 0.8rem;
+    margin-bottom: -0.15rem;
+    color: var(--highlight-color);
+    font-weight: 500;
+}
+
+.clock__date {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
+/* .................................. */
+
+/* dark theme */
+
+.dark__theme {
+    background-color: var(--body-color-dark);
+    color: var(--text-color-light);
+}
+
+.dark__theme .theme__btn {
+    box-shadow: 2px 2px 4px var(--dark-dim),
+    -2px -2px 4px var(--dark-bright);
+    border: 0.18rem solid var(--dark-border);
+}
+
+.dark__theme .clock__container {
+    box-shadow: 6px 6px 10px var(--dark-dim),
+                -4px -4px 10px var(--dark-bright);
+    border: 0.15rem solid var(--dark-border);
+}
+
+.dark__theme .clock {
+    border: 0.16rem solid var(--dark-border);
+    box-shadow: inset 3px 3px 5px var(--shadow-dim),
+                inset -2px -2px 5px var(--shadow-bright);
+}
+
+/* change theme icon */
+
+.change__icon .dark {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.change__icon .light {
+    opacity: 1;
+    transform: rotate(90deg);
+
+}
+
+
+/* .................................. */
+
+/* breakpoints */
+
+/* for very small devices */
+
+@media screen and (max-width: 375px) {
+    .clock__container {
+        height: 300px;
+        width: 180px;
+        padding: 0.15rem;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .clock__content,
+    .clock__data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .clock__time {
+        font-size: 2.5rem;
+    }
+
+    .time__ampm {
+        font-size: 0.6rem;
+        margin-left: 0.15rem;
+    }
+
+    .clock__day {
+        font-size: 0.7rem;
+        margin-bottom: -0.10rem;
+    }
+    
+    .clock__date {
+        font-size: 0.9rem;
+    }
+}
+
+/* for medium devices and beyond */
+
+@media screen and (min-width: 600px) {
+    .theme__btn {
+        align-self: center;
+        margin-left: 30rem;
+    }
+}
+
+/* for large devices */
+
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-inline: auto;
+        padding-inline: 1rem;
+    }
+
+    .clock__container {
+        width: 400px;
+        height: 200px;
+    }
+}
